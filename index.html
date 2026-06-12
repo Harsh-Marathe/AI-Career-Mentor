@@ -1,18 +1,1412 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CareerPath AI – Freshers Career Mentor</title>
-    <meta name="description" content="CareerPath AI is an intelligent career mentoring platform built for students and freshers. Get personalized guidance, skill roadmaps, interview prep, and resume advice." />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-slate-50 text-slate-900 min-h-screen antialiased selection:bg-blue-100 selection:text-blue-900">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerPath Hub — Premium Career Guidance for Students</title>
+  <meta name="description" content="Discover structured career paths, learning roadmaps, certifications, and prep tips tailored for students. Clear, editorial-grade guidance.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sticky Backdrop-Blurred Navbar -->
+  <nav class="navbar" id="global-navbar">
+    <div class="container">
+      <a href="#home" class="logo">CareerPath<span>Hub</span></a>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#careers">Career Paths</a></li>
+        <li><a href="#roadmaps">Roadmaps</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#interview">Interview Prep</a></li>
+        <li><a href="#resume">Resume Tips</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <a href="#careers" class="btn btn-outline" style="padding: 0.6rem 1.4rem; font-size: 0.9rem;">Explore Careers →</a>
+      <button class="nav-toggle" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======================================================== -->
+  <!-- PAGE 1: HOME PAGE                                        -->
+  <!-- ======================================================== -->
+  <section class="page-section active" id="page-home">
+    <!-- Constellation Canvas Container -->
+    <div class="constellation-wrapper">
+      <canvas id="constellation-canvas"></canvas>
+    </div>
+
+    <div class="hero">
+      <div class="container hero-layout">
+        <div class="hero-text fade-in-up">
+          <h1>Find the Career<br><span class="gradient-heading">You Were Built For.</span></h1>
+          <p>We break down high-demand career tracks into clear skills, roadmaps, and credential guides. No fluff. No expensive counseling. Just straight facts for students who want to build a real future.</p>
+          <div class="hero-ctas">
+            <a href="#careers" class="btn btn-primary">Browse Career Paths</a>
+            <a href="#roadmaps" class="btn btn-ghost">View Roadmaps →</a>
+          </div>
+        </div>
+        <div class="hero-graphic" style="position: relative; height: 350px;">
+          <!-- Fallback or container matching constellation wrapper spacing -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrolling Ticker strip -->
+    <div class="ticker-container">
+      <div class="ticker-wrap">
+        <div class="ticker-move">
+          <div class="ticker-item">Data Analyst</div>
+          <div class="ticker-item">Software Engineer</div>
+          <div class="ticker-item">AI Engineer</div>
+          <div class="ticker-item">Product Manager</div>
+          <div class="ticker-item">Cloud Engineer</div>
+          <div class="ticker-item">Cybersecurity</div>
+          <div class="ticker-item">Business Analyst</div>
+          <div class="ticker-item">Digital Marketer</div>
+          <!-- Loop duplicates for seamless scrolling -->
+          <div class="ticker-item">Data Analyst</div>
+          <div class="ticker-item">Software Engineer</div>
+          <div class="ticker-item">AI Engineer</div>
+          <div class="ticker-item">Product Manager</div>
+          <div class="ticker-item">Cloud Engineer</div>
+          <div class="ticker-item">Cybersecurity</div>
+          <div class="ticker-item">Business Analyst</div>
+          <div class="ticker-item">Digital Marketer</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recently Viewed Section (Generated dynamically by JS) -->
+    <div class="container" id="recently-viewed-section" style="display: none; margin-top: 6rem;">
+      <div class="section-header" style="margin-bottom: 2.5rem;">
+        <span class="mono-label">CONTINUE EXPLORING</span>
+        <h2 style="font-size: 2rem; margin-top: 0.2rem;">Recently Viewed Paths</h2>
+      </div>
+      <div class="asymmetric-grid" id="recently-viewed-container">
+        <!-- Rendered by localStorage -->
+      </div>
+    </div>
+
+    <!-- Popular Career Paths Section -->
+    <div class="container" style="margin-top: 8rem;">
+      <div class="section-header fade-in-up">
+        <span class="mono-label">EXPLORE CAREERS</span>
+        <h2>Where do you want to go?</h2>
+        <p style="margin-top: 1rem; font-size: 1.1rem;">Click any path below to see exact day-to-day responsibilities, learning requirements, and estimated salary progressions.</p>
+      </div>
+
+      <div class="asymmetric-grid">
+        <!-- Card 1 (Span 8) -->
+        <div class="career-card grid-item-8 fade-in-up delay-1">
+          <div class="career-card-content">
+            <div class="career-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0h.5m-.5 0h-10.5m.5 0-1-3m0 0h5.25" />
+              </svg>
+            </div>
+            <h3>Data Analyst</h3>
+            <p>Uncover business stories hidden inside complex datasets. You will write code to clean data, build dashboards, and advise department leaders.</p>
+          </div>
+          <div class="career-card-meta">
+            <span class="salary-badge">$65k - $95k</span>
+            <a href="#career-detail-data-analyst" class="card-link">View Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 2 (Span 4) -->
+        <div class="career-card grid-item-4 fade-in-up delay-2">
+          <div class="career-card-content">
+            <div class="career-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+              </svg>
+            </div>
+            <h3>Software Engineer</h3>
+            <p>Build the structural codebase behind modern web apps and database APIs.</p>
+          </div>
+          <div class="career-card-meta">
+            <span class="salary-badge">$80k - $130k</span>
+            <a href="#career-detail-software-engineer" class="card-link">View Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 3 (Span 4) -->
+        <div class="career-card grid-item-4 fade-in-up delay-1">
+          <div class="career-card-content">
+            <div class="career-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 21l8.982-8.979M18 3.612V9M21 6H15.612M3 10.5h18M3 15h18" />
+              </svg>
+            </div>
+            <h3>AI Engineer</h3>
+            <p>Construct intelligent integrations and implement large language models inside apps.</p>
+          </div>
+          <div class="career-card-meta">
+            <span class="salary-badge">$110k - $170k</span>
+            <a href="#career-detail-ai-engineer" class="card-link">View Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 4 (Span 8) -->
+        <div class="career-card grid-item-8 fade-in-up delay-2">
+          <div class="career-card-content">
+            <div class="career-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751A11.959 11.959 0 0 1 12 2.712Z" />
+              </svg>
+            </div>
+            <h3>Cybersecurity Analyst</h3>
+            <p>Guard corporate networks against active exploits and build firewalls. You will monitor security indicators and establish recovery protocols to protect data.</p>
+          </div>
+          <div class="career-card-meta">
+            <span class="salary-badge">$75k - $115k</span>
+            <a href="#career-detail-cybersecurity-analyst" class="card-link">View Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 5 (Span 6) -->
+        <div class="career-card grid-item-6 fade-in-up delay-1">
+          <div class="career-card-content">
+            <div class="career-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
+              </svg>
+            </div>
+            <h3>Cloud Engineer</h3>
+            <p>Orchestrate scalable platforms and manage server buckets on Amazon AWS or Microsoft Azure systems using Infrastructure as Code.</p>
+          </div>
+          <div class="career-card-meta">
+            <span class="salary-badge">$85k - $135k</span>
+            <a href="#career-detail-cloud-engineer" class="card-link">View Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 6 (Span 6) -->
+        <div class="career-card grid-item-6 fade-in-up delay-2">
+          <div class="career-card-content">
+            <div class="career-icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+              </svg>
+            </div>
+            <h3>Product Manager</h3>
+            <p>Direct the product lifecycle. You will write requirement specs, interface with software engineers, and structure launch timelines.</p>
+          </div>
+          <div class="career-card-meta">
+            <span class="salary-badge">$85k - $145k</span>
+            <a href="#career-detail-product-manager" class="card-link">View Path →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Career Planning Matters Section -->
+    <div class="why-section">
+      <div class="container why-layout">
+        <div class="stat-block fade-in-up">
+          <div class="stat-number">73%</div>
+          <div class="stat-desc">of college students feel lost choosing a career track. Traditional counseling is slow. We build for clarity.</div>
+        </div>
+        <div class="reasons-timeline fade-in-up delay-2">
+          <div class="reason-item">
+            <div class="reason-dot"></div>
+            <div class="reason-content">
+              <h4>Structured Blueprints</h4>
+              <p>Skip the trial-and-error. Learn the exact order of programming libraries and databases required to secure internship roles.</p>
+            </div>
+          </div>
+          <div class="reason-item">
+            <div class="reason-dot"></div>
+            <div class="reason-content">
+              <h4>Direct Financial Insight</h4>
+              <p>Gain transparency on average starting numbers, career trajectories, and the level of study needed to reach senior-tier compensation.</p>
+            </div>
+          </div>
+          <div class="reason-item">
+            <div class="reason-dot"></div>
+            <div class="reason-content">
+              <h4>Industry Standard Badging</h4>
+              <p>Identify which credentials carry actual weight with HR hiring managers, and avoid paying thousands for non-accredited courses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="container how-section">
+      <div class="section-header fade-in-up">
+        <span class="mono-label">METHODOLOGY</span>
+        <h2>Your Path, Simplified</h2>
+      </div>
+      <div class="steps-row">
+        <!-- Step 1 -->
+        <div class="step-card fade-in-up delay-1">
+          <div class="step-num">01</div>
+          <h3>Explore Paths</h3>
+          <p>Read transparent overviews of day-to-day requirements, starting salaries, and structural difficulties for 9 high-growth careers.</p>
+        </div>
+        <!-- Step 2 -->
+        <div class="step-card fade-in-up delay-2">
+          <div class="step-num">02</div>
+          <h3>Learn the Roadmap</h3>
+          <p>Follow a progressive vertical roadmap specifying tools, concept sequences, time projections, and project build cues.</p>
+        </div>
+        <!-- Step 3 -->
+        <div class="step-card fade-in-up delay-3">
+          <div class="step-num">03</div>
+          <h3>Get Certified</h3>
+          <p>Explore recognized certifications from Amazon AWS, Google, and IBM, identifying intermediate costs and timing details.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- PAGE 2: CAREER PATHS GRID PAGE                           -->
+  <!-- ======================================================== -->
+  <section class="page-section" id="page-careers">
+    <div class="container">
+      <div class="career-hero">
+        <span class="mono-label">MASTER DIRECTORY</span>
+        <h1 style="font-size: 3.5rem; margin-top: 0.5rem;">Choose Your Direction</h1>
+        <p style="font-size: 1.15rem; margin-top: 1rem; max-width: 700px;">Filter through technology and business specializations. Alternate grid structures reveal skill details and starting salary estimations.</p>
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All Specialties</button>
+          <button class="filter-tab" data-filter="technology">Technology</button>
+          <button class="filter-tab" data-filter="business">Business & Strategy</button>
+        </div>
+      </div>
+
+      <div class="masonry-grid" id="careers-grid-container">
+        <!-- Card 1: Data Analyst -->
+        <div class="detail-card" data-category="technology">
+          <div>
+            <span class="mono-label" style="font-size: 10px; margin-bottom: 0.5rem;">TECHNOLOGY</span>
+            <h3>Data Analyst</h3>
+            <p class="detail-card-summary">Translate databases and raw information grids into executive-ready business insights.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Excel</span>
+              <span class="skill-tag">Power BI</span>
+            </div>
+          </div>
+          <div class="career-card-meta">
+            <div>
+              <div class="salary-badge" style="margin-bottom: 0.4rem;">$65k - $95k</div>
+              <div class="difficulty-indicator">
+                <span>Diff:</span>
+                <div class="difficulty-dots">
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                </div>
+              </div>
+            </div>
+            <a href="#career-detail-data-analyst" class="card-link">Explore Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 2: Software Engineer -->
+        <div class="detail-card" data-category="technology">
+          <div>
+            <span class="mono-label" style="font-size: 10px; margin-bottom: 0.5rem;">TECHNOLOGY</span>
+            <h3>Software Engineer</h3>
+            <p class="detail-card-summary">Construct programmatic structures, manage repositories, and build dynamic applications.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Node.js</span>
+            </div>
+          </div>
+          <div class="career-card-meta">
+            <div>
+              <div class="salary-badge" style="margin-bottom: 0.4rem;">$80k - $130k</div>
+              <div class="difficulty-indicator">
+                <span>Diff:</span>
+                <div class="difficulty-dots">
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                </div>
+              </div>
+            </div>
+            <a href="#career-detail-software-engineer" class="card-link">Explore Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 3: AI Engineer -->
+        <div class="detail-card" data-category="technology">
+          <div>
+            <span class="mono-label" style="font-size: 10px; margin-bottom: 0.5rem;">TECHNOLOGY</span>
+            <h3>AI Engineer</h3>
+            <p class="detail-card-summary">Implement semantic language models, structure RAG systems, and orchestrate neural weights.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Vector DB</span>
+              <span class="skill-tag">LLMs</span>
+            </div>
+          </div>
+          <div class="career-card-meta">
+            <div>
+              <div class="salary-badge" style="margin-bottom: 0.4rem;">$110k - $170k</div>
+              <div class="difficulty-indicator">
+                <span>Diff:</span>
+                <div class="difficulty-dots">
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot empty">○</span>
+                </div>
+              </div>
+            </div>
+            <a href="#career-detail-ai-engineer" class="card-link">Explore Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 4: Cybersecurity Analyst -->
+        <div class="detail-card" data-category="technology">
+          <div>
+            <span class="mono-label" style="font-size: 10px; margin-bottom: 0.5rem;">TECHNOLOGY</span>
+            <h3>Cybersecurity Analyst</h3>
+            <p class="detail-card-summary">Defend corporate servers against breach attempts and configure monitoring dashboards.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Networking</span>
+              <span class="skill-tag">SIEM</span>
+              <span class="skill-tag">Linux</span>
+            </div>
+          </div>
+          <div class="career-card-meta">
+            <div>
+              <div class="salary-badge" style="margin-bottom: 0.4rem;">$75k - $115k</div>
+              <div class="difficulty-indicator">
+                <span>Diff:</span>
+                <div class="difficulty-dots">
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                </div>
+              </div>
+            </div>
+            <a href="#career-detail-cybersecurity-analyst" class="card-link">Explore Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 5: Cloud Engineer -->
+        <div class="detail-card" data-category="technology">
+          <div>
+            <span class="mono-label" style="font-size: 10px; margin-bottom: 0.5rem;">TECHNOLOGY</span>
+            <h3>Cloud Engineer</h3>
+            <p class="detail-card-summary">Provision computing engines, write IaC files, and administer AWS/Azure systems.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">AWS</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Terraform</span>
+            </div>
+          </div>
+          <div class="career-card-meta">
+            <div>
+              <div class="salary-badge" style="margin-bottom: 0.4rem;">$85k - $135k</div>
+              <div class="difficulty-indicator">
+                <span>Diff:</span>
+                <div class="difficulty-dots">
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                </div>
+              </div>
+            </div>
+            <a href="#career-detail-cloud-engineer" class="card-link">Explore Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 6: Data Scientist -->
+        <div class="detail-card" data-category="technology">
+          <div>
+            <span class="mono-label" style="font-size: 10px; margin-bottom: 0.5rem;">TECHNOLOGY</span>
+            <h3>Data Scientist</h3>
+            <p class="detail-card-summary">Train prediction algorithms and apply deep mathematical equations to enterprise growth issues.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">ML Models</span>
+              <span class="skill-tag">Statistics</span>
+            </div>
+          </div>
+          <div class="career-card-meta">
+            <div>
+              <div class="salary-badge" style="margin-bottom: 0.4rem;">$95k - $140k</div>
+              <div class="difficulty-indicator">
+                <span>Diff:</span>
+                <div class="difficulty-dots">
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot empty">○</span>
+                </div>
+              </div>
+            </div>
+            <a href="#career-detail-data-scientist" class="card-link">Explore Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 7: Business Analyst -->
+        <div class="detail-card" data-category="business">
+          <div>
+            <span class="mono-label" style="font-size: 10px; margin-bottom: 0.5rem;">BUSINESS</span>
+            <h3>Business Analyst</h3>
+            <p class="detail-card-summary">Draft technical specification tickets and map operational workflows in Agile systems.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Jira</span>
+              <span class="skill-tag">BPMN</span>
+              <span class="skill-tag">Requirements</span>
+            </div>
+          </div>
+          <div class="career-card-meta">
+            <div>
+              <div class="salary-badge" style="margin-bottom: 0.4rem;">$65k - $95k</div>
+              <div class="difficulty-indicator">
+                <span>Diff:</span>
+                <div class="difficulty-dots">
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                </div>
+              </div>
+            </div>
+            <a href="#career-detail-business-analyst" class="card-link">Explore Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 8: Product Manager -->
+        <div class="detail-card" data-category="business">
+          <div>
+            <span class="mono-label" style="font-size: 10px; margin-bottom: 0.5rem;">BUSINESS</span>
+            <h3>Product Manager</h3>
+            <p class="detail-card-summary">Analyze user metrics and coordinate engineering cycles to deliver maximum feature value.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Strategy</span>
+              <span class="skill-tag">Research</span>
+              <span class="skill-tag">Analytics</span>
+            </div>
+          </div>
+          <div class="career-card-meta">
+            <div>
+              <div class="salary-badge" style="margin-bottom: 0.4rem;">$85k - $145k</div>
+              <div class="difficulty-indicator">
+                <span>Diff:</span>
+                <div class="difficulty-dots">
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                </div>
+              </div>
+            </div>
+            <a href="#career-detail-product-manager" class="card-link">Explore Path →</a>
+          </div>
+        </div>
+
+        <!-- Card 9: Digital Marketer -->
+        <div class="detail-card" data-category="business">
+          <div>
+            <span class="mono-label" style="font-size: 10px; margin-bottom: 0.5rem;">BUSINESS</span>
+            <h3>Digital Marketer</h3>
+            <p class="detail-card-summary">Structure search advertising budgets and build organic customer retention campaigns.</p>
+            <div class="skill-tags">
+              <span class="skill-tag">SEO</span>
+              <span class="skill-tag">Google Ads</span>
+              <span class="skill-tag">Copywriting</span>
+            </div>
+          </div>
+          <div class="career-card-meta">
+            <div>
+              <div class="salary-badge" style="margin-bottom: 0.4rem;">$55k - $85k</div>
+              <div class="difficulty-indicator">
+                <span>Diff:</span>
+                <div class="difficulty-dots">
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot">●</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                  <span class="difficulty-dot empty">○</span>
+                </div>
+              </div>
+            </div>
+            <a href="#career-detail-digital-marketer" class="card-link">Explore Path →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- PAGE 3: CAREER DETAIL PAGE (TEMPLATE RENDERED DYNAMICALLY)-->
+  <!-- ======================================================== -->
+  <section class="page-section" id="page-career-detail">
+    <div class="container">
+      <!-- Dynamic Breadcrumbs -->
+      <div class="breadcrumbs">
+        <a href="#home">Home</a>
+        <span>/</span>
+        <a href="#careers">Careers</a>
+        <span>/</span>
+        <span id="bc-active" style="color: var(--text-primary);">Data Analyst</span>
+      </div>
+
+      <!-- Hero Header -->
+      <div class="detail-hero">
+        <span class="mono-label" id="detail-eyebrow">DATA & ANALYTICS</span>
+        <h1 style="font-size: 4rem; margin-top: 0.5rem;" id="detail-title">Data Analyst</h1>
+        <p class="detail-hero-desc" id="detail-desc-hero">Translate databases and raw information grids into executive-ready business insights.</p>
+      </div>
+
+      <!-- Side-Nav Layout -->
+      <div class="detail-content-layout">
+        <!-- Desktop Sticky Left Sidebar Nav -->
+        <div class="sticky-sidenav">
+          <button class="sidenav-link active" data-target="detail-overview">Overview</button>
+          <button class="sidenav-link" data-target="detail-skills">Required Skills</button>
+          <button class="sidenav-link" data-target="detail-roadmap">Learning Roadmap</button>
+          <button class="sidenav-link" data-target="detail-certs">Certifications</button>
+          <button class="sidenav-link" data-target="detail-growth">Career Growth</button>
+        </div>
+
+        <!-- Main Column Content Panels -->
+        <div class="detail-main-column">
+          <!-- Overview Panel -->
+          <div class="detail-section-block" id="detail-overview">
+            <h3>Overview</h3>
+            <div class="overview-grid">
+              <p class="overview-desc" id="overview-text">Data Analysts are the translators between technical databases and business strategy. In this role, you won't just run numbers; you will discover patterns that prevent losses, uncover new customer behaviors, and forecast sales trends. You will work closely with database systems, visualization tools, and department heads to turn messy inputs into clean, understandable dashboards.</p>
+              
+              <div class="overview-stats-panel">
+                <div class="overview-stat-row">
+                  <span class="stat-label">Salary Range</span>
+                  <span class="stat-value highlight" id="stat-salary">$82,000 avg</span>
+                </div>
+                <div class="overview-stat-row">
+                  <span class="stat-label">Market Demand</span>
+                  <span class="stat-value" id="stat-growth">+23% (Very Fast)</span>
+                </div>
+                <div class="overview-stat-row">
+                  <span class="stat-label">Difficulty Rating</span>
+                  <span class="stat-value" id="stat-diff">Medium (2/5)</span>
+                </div>
+                <div class="overview-stat-row">
+                  <span class="stat-label">Typical Structure</span>
+                  <span class="stat-value" id="stat-type">Hybrid / Remote Friendly</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Required Skills Panel -->
+          <div class="detail-section-block" id="detail-skills">
+            <h3>Required Skills</h3>
+            <p style="margin-bottom: 2rem;">Hiring managers look for a balance of software tools, programming capabilities, and theoretical mathematical concepts. Here is what you must build:</p>
+            
+            <div class="skills-matrix" id="skills-matrix-container">
+              <!-- Rendered Dynamically by app.js -->
+            </div>
+          </div>
+
+          <!-- Roadmap Timeline Panel -->
+          <div class="detail-section-block" id="detail-roadmap">
+            <h3>Learning Roadmap</h3>
+            <p style="margin-bottom: 2rem;">Follow this sequence to go from zero experience to build-ready portfolios. We recommend finishing each stage's project suggestion before proceeding.</p>
+            
+            <div class="roadmap-timeline" id="roadmap-timeline-container">
+              <!-- Rendered Dynamically by app.js -->
+            </div>
+          </div>
+
+          <!-- Certifications Panel -->
+          <div class="detail-section-block" id="detail-certs">
+            <h3>Certifications</h3>
+            <p style="margin-bottom: 2rem;">These credentials carry weight with security audits and human resources filters. They are recognized across the tech landscape.</p>
+            
+            <div class="detail-certs-grid" id="detail-certs-container">
+              <!-- Rendered Dynamically by app.js -->
+            </div>
+          </div>
+
+          <!-- Career Growth Panel -->
+          <div class="detail-section-block" id="detail-growth">
+            <h3>Career Growth</h3>
+            <p style="margin-bottom: 2rem;">The progression of experience levels, title structures, and matching national salary ranges. Progression tracks connect directly.</p>
+            
+            <div class="growth-track" id="growth-track-container">
+              <!-- Rendered Dynamically by app.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- PAGE 4: SKILL ROADMAPS PAGE                              -->
+  <!-- ======================================================== -->
+  <section class="page-section" id="page-roadmaps">
+    <div class="container">
+      <div class="career-hero">
+        <span class="mono-label">TIMELINE MAPS</span>
+        <h1 style="font-size: 3.5rem; margin-top: 0.5rem;">Visual Learning Tracks</h1>
+        <p style="font-size: 1.15rem; margin-top: 1rem; max-width: 700px;">Explore the sequential timeline layouts for our most requested career tracks. Each column represents a complete developmental pathway.</p>
+      </div>
+
+      <div class="roadmaps-layout">
+        <!-- Column 1: Data Analyst -->
+        <div class="roadmap-column">
+          <div class="roadmap-col-header">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0h.5m-.5 0h-10.5m.5 0-1-3m0 0h5.25" />
+            </svg>
+            <h3>Data Analyst</h3>
+          </div>
+          <div class="zigzag-timeline">
+            <!-- Step 1 -->
+            <div class="zigzag-step active">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Foundation</span>
+                <div class="zigzag-name">Advanced Excel</div>
+                <div class="zigzag-time">2-3 Weeks · VLOOKUP & Pivots</div>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="zigzag-step">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Intermediate</span>
+                <div class="zigzag-name">SQL Database Queries</div>
+                <div class="zigzag-time">4 Weeks · JOINs & Aggregations</div>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="zigzag-step">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Advanced</span>
+                <div class="zigzag-name">Power BI Dashboards</div>
+                <div class="zigzag-time">3 Weeks · UX & Report Delivery</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Software Engineer -->
+        <div class="roadmap-column">
+          <div class="roadmap-col-header">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+            </svg>
+            <h3>Software Engineer</h3>
+          </div>
+          <div class="zigzag-timeline">
+            <!-- Step 1 -->
+            <div class="zigzag-step active">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Foundation</span>
+                <div class="zigzag-name">JavaScript Core</div>
+                <div class="zigzag-time">4 Weeks · Variables & Control Flow</div>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="zigzag-step">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Intermediate</span>
+                <div class="zigzag-name">React Components</div>
+                <div class="zigzag-time">4 Weeks · Hooks & State Cycles</div>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="zigzag-step">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Advanced</span>
+                <div class="zigzag-name">Node.js API Express</div>
+                <div class="zigzag-time">4 Weeks · Servers & SQL Schemas</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: AI Engineer -->
+        <div class="roadmap-column">
+          <div class="roadmap-col-header">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 21l8.982-8.979M18 3.612V9M21 6H15.612M3 10.5h18M3 15h18" />
+            </svg>
+            <h3>AI Engineer</h3>
+          </div>
+          <div class="zigzag-timeline">
+            <!-- Step 1 -->
+            <div class="zigzag-step active">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Foundation</span>
+                <div class="zigzag-name">Python Scripting</div>
+                <div class="zigzag-time">4 Weeks · Syntaxes & API Calls</div>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="zigzag-step">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Intermediate</span>
+                <div class="zigzag-name">Vector Search & RAG</div>
+                <div class="zigzag-time">4 Weeks · ChromaDB & Embeddings</div>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="zigzag-step">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Advanced</span>
+                <div class="zigzag-name">Fine-Tuning Models</div>
+                <div class="zigzag-time">4 Weeks · LoRA datasets & loss</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 4: Cybersecurity Analyst -->
+        <div class="roadmap-column">
+          <div class="roadmap-col-header">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751A11.959 11.959 0 0 1 12 2.712Z" />
+            </svg>
+            <h3>Cybersecurity Analyst</h3>
+          </div>
+          <div class="zigzag-timeline">
+            <!-- Step 1 -->
+            <div class="zigzag-step active">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Foundation</span>
+                <div class="zigzag-name">Network Topologies</div>
+                <div class="zigzag-time">4 Weeks · TCP/IP & Subnets</div>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="zigzag-step">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Intermediate</span>
+                <div class="zigzag-name">Linux SysAdmin Core</div>
+                <div class="zigzag-time">3 Weeks · CLI Commands & logs</div>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="zigzag-step">
+              <div class="zigzag-dot"></div>
+              <div class="zigzag-content">
+                <span class="zigzag-phase">Advanced</span>
+                <div class="zigzag-name">SIEM Splunk Monitors</div>
+                <div class="zigzag-time">4 Weeks · Alerts & threat packets</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- PAGE 5: CERTIFICATIONS GRID PAGE                         -->
+  <!-- ======================================================== -->
+  <section class="page-section" id="page-certifications">
+    <div class="container">
+      <div class="certs-hero">
+        <span class="mono-label">INDUSTRY CERTIFICATES</span>
+        <h1 style="font-size: 3.5rem; margin-top: 0.5rem;">Credibility Guide</h1>
+        <p style="font-size: 1.15rem; margin-top: 1rem; max-width: 700px;">Identify which cloud and analytical certifications are valued by security systems and HR managers. Filter lists dynamically.</p>
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All Certificates</button>
+          <button class="filter-tab" data-filter="data">Data Analytics</button>
+          <button class="filter-tab" data-filter="cloud">Cloud Computing</button>
+          <button class="filter-tab" data-filter="ai">Artificial Intelligence</button>
+        </div>
+      </div>
+
+      <div class="certs-grid" id="certs-grid-container">
+        <!-- Google Data Analytics -->
+        <div class="cert-card" data-category="data">
+          <div>
+            <div class="cert-card-header">
+              <div class="cert-logo-placeholder google">GO</div>
+              <div class="cert-meta-info">
+                <h4>Google Data Analytics</h4>
+                <span class="cert-issuer">Google</span>
+              </div>
+            </div>
+            <div class="cert-badges">
+              <span class="cert-badge level">Beginner</span>
+              <span class="cert-badge cost">Paid ($39/mo)</span>
+            </div>
+          </div>
+          <div class="cert-card-footer">
+            <span class="cert-duration">3-6 Months</span>
+            <a href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank" class="cert-link">View Cert →</a>
+          </div>
+        </div>
+
+        <!-- IBM Data Analyst -->
+        <div class="cert-card" data-category="data">
+          <div>
+            <div class="cert-card-header">
+              <div class="cert-logo-placeholder ibm">IB</div>
+              <div class="cert-meta-info">
+                <h4>IBM Data Analyst</h4>
+                <span class="cert-issuer">IBM</span>
+              </div>
+            </div>
+            <div class="cert-badges">
+              <span class="cert-badge level">Beginner</span>
+              <span class="cert-badge cost">Paid ($39/mo)</span>
+            </div>
+          </div>
+          <div class="cert-card-footer">
+            <span class="cert-duration">3-4 Months</span>
+            <a href="https://www.coursera.org/professional-certificates/ibm-data-analyst" target="_blank" class="cert-link">View Cert →</a>
+          </div>
+        </div>
+
+        <!-- AWS Cloud Practitioner -->
+        <div class="cert-card" data-category="cloud">
+          <div>
+            <div class="cert-card-header">
+              <div class="cert-logo-placeholder aws">AW</div>
+              <div class="cert-meta-info">
+                <h4>AWS Cloud Practitioner</h4>
+                <span class="cert-issuer">Amazon Web Services</span>
+              </div>
+            </div>
+            <div class="cert-badges">
+              <span class="cert-badge level">Beginner</span>
+              <span class="cert-badge cost">Paid ($100)</span>
+            </div>
+          </div>
+          <div class="cert-card-footer">
+            <span class="cert-duration">1-2 Months</span>
+            <a href="https://aws.amazon.com/certification/certified-cloud-practitioner/" target="_blank" class="cert-link">View Cert →</a>
+          </div>
+        </div>
+
+        <!-- Azure Fundamentals -->
+        <div class="cert-card" data-category="cloud">
+          <div>
+            <div class="cert-card-header">
+              <div class="cert-logo-placeholder azure">MS</div>
+              <div class="cert-meta-info">
+                <h4>Azure Fundamentals</h4>
+                <span class="cert-issuer">Microsoft</span>
+              </div>
+            </div>
+            <div class="cert-badges">
+              <span class="cert-badge level">Beginner</span>
+              <span class="cert-badge cost">Paid ($99)</span>
+            </div>
+          </div>
+          <div class="cert-card-footer">
+            <span class="cert-duration">1 Month</span>
+            <a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/" target="_blank" class="cert-link">View Cert →</a>
+          </div>
+        </div>
+
+        <!-- IBM AI Fundamentals -->
+        <div class="cert-card" data-category="ai">
+          <div>
+            <div class="cert-card-header">
+              <div class="cert-logo-placeholder ibm">IB</div>
+              <div class="cert-meta-info">
+                <h4>IBM AI Fundamentals</h4>
+                <span class="cert-issuer">IBM</span>
+              </div>
+            </div>
+            <div class="cert-badges">
+              <span class="cert-badge level">Beginner</span>
+              <span class="cert-badge cost">Paid ($39/mo)</span>
+            </div>
+          </div>
+          <div class="cert-card-footer">
+            <span class="cert-duration">2-3 Months</span>
+            <a href="https://www.coursera.org/professional-certificates/ibm-applied-ai" target="_blank" class="cert-link">View Cert →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- PAGE 6: INTERVIEW PREPARATION                            -->
+  <!-- ======================================================== -->
+  <section class="page-section" id="page-interview">
+    <div class="container">
+      <div class="career-hero">
+        <span class="mono-label">INTERACTION PREPARATION</span>
+        <h1 style="font-size: 3.5rem; margin-top: 0.5rem;">Q&A Practice Vault</h1>
+        <p style="font-size: 1.15rem; margin-top: 1rem; max-width: 700px;">Review structured replies for conversational and technical checks. Select categories to isolate question groups.</p>
+      </div>
+
+      <div class="interview-layout">
+        <!-- Category Sidenav -->
+        <div class="sticky-sidenav">
+          <button class="sidenav-link active" data-category="hr">HR Questions</button>
+          <button class="sidenav-link" data-category="sql">SQL Questions</button>
+          <button class="sidenav-link" data-category="python">Python Questions</button>
+          <button class="sidenav-link" data-category="powerbi">Power BI Questions</button>
+        </div>
+
+        <!-- Main Q&A Accordion Columns -->
+        <div class="detail-main-column">
+          
+          <!-- HR Questions Accordion Group -->
+          <div class="accordion-group" id="group-hr">
+            <!-- Q1 -->
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h4>"Tell me about yourself."</h4>
+                <span class="accordion-icon">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <div class="ans-title">Answer Framework</div>
+                  <p class="ans-body">Focus on the "Present-Past-Future" formula. Start with your current status (e.g. college junior studying computer science), detail a key past accomplishment (a portfolio application you finished or an internship experience), and close with your future target matching the specific company.</p>
+                  <div class="key-points-title">Key Points to Cover</div>
+                  <ul class="key-points-list">
+                    <li>Define your technical focus immediately.</li>
+                    <li>Avoid listing chronological school courses. Reference hands-on projects instead.</li>
+                    <li>State exactly why their role matches your development trajectory.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h4>"Why should we hire you?"</h4>
+                <span class="accordion-icon">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <div class="ans-title">Answer Framework</div>
+                  <p class="ans-body">Align your unique credentials directly with their job requirements. Show you possess both the core coding capability to write code immediately and the curiosity to adapt quickly as systems scale.</p>
+                  <div class="key-points-title">Key Points to Cover</div>
+                  <ul class="key-points-list">
+                    <li>Highlight a skill mentioned in their job description that you master.</li>
+                    <li>Demonstrate active problem-solving with a past project challenge.</li>
+                    <li>Emphasize that you work collaboratively and ask clarifying questions early.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h4>"Tell me about a time you resolved a technical conflict."</h4>
+                <span class="accordion-icon">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <div class="ans-title">Answer Framework</div>
+                  <p class="ans-body">Use the STAR method (Situation, Task, Action, Result). Focus on technical differences—like choosing between two database structures—and explain how you gathered benchmark facts to choose objectively.</p>
+                  <div class="key-points-title">Key Points to Cover</div>
+                  <ul class="key-points-list">
+                    <li>Keep personal friction out of the story; focus strictly on project tradeoffs.</li>
+                    <li>Explain how you tested both methods to show quantitative results.</li>
+                    <li>Demonstrate respect for teammates who held opposing opinions.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SQL Questions Group -->
+          <div class="accordion-group" id="group-sql" style="display: none;">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h4>How do you find the second-highest salary in an Employee table?</h4>
+                <span class="accordion-icon">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <div class="ans-title">SQL Query Solution</div>
+                  <p class="ans-body">You can achieve this using a subquery or a window function. Below is the standard subquery strategy:</p>
+                  <div class="code-block-wrapper">
+                    <pre><code><span class="code-keyword">SELECT</span> <span class="code-function">MAX</span>(Salary) <span class="code-keyword">FROM</span> Employee
+<span class="code-keyword">WHERE</span> Salary &lt; (
+  <span class="code-keyword">SELECT</span> <span class="code-function">MAX</span>(Salary) <span class="code-keyword">FROM</span> Employee
+);</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h4>What is the difference between INNER JOIN, LEFT JOIN, and UNION?</h4>
+                <span class="accordion-icon">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <div class="ans-title">Explanation</div>
+                  <p class="ans-body"><strong>INNER JOIN</strong> returns rows with matching keys in both tables. <br><strong>LEFT JOIN</strong> returns all rows from the left table and matching rows from the right table. <br><strong>UNION</strong> merges the results of two queries vertically, removing duplicates (requires identical column counts).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Python Questions Group -->
+          <div class="accordion-group" id="group-python" style="display: none;">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h4>How do you count duplicate values in a list using Python?</h4>
+                <span class="accordion-icon">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <div class="ans-title">Python Code Solution</div>
+                  <p class="ans-body">You should use Python's built-in <code>collections.Counter</code> library for optimal speed:</p>
+                  <div class="code-block-wrapper">
+                    <pre><code><span class="code-keyword">from</span> collections <span class="code-keyword">import</span> Counter
+
+items = [<span class="code-string">'apple'</span>, <span class="code-string">'banana'</span>, <span class="code-string">'apple'</span>, <span class="code-string">'orange'</span>]
+counts = Counter(items)
+<span class="code-comment"># Output: Counter({'apple': 2, 'banana': 1, 'orange': 1})</span>
+<span class="code-function">print</span>(counts)</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Power BI Questions Group -->
+          <div class="accordion-group" id="group-powerbi" style="display: none;">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                <h4>What is the difference between CALCULATION columns and MEASURES in DAX?</h4>
+                <span class="accordion-icon">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <div class="ans-title">Explanation</div>
+                  <p class="ans-body"><strong>Calculated Columns</strong> compute values row-by-row during model refresh and store them in database memory. <br><strong>Measures</strong> evaluate dynamically on-demand based on user filter selections, consuming CPU processing power but saving storage memory.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- PAGE 7: RESUME TIPS PAGE                                 -->
+  <!-- ======================================================== -->
+  <section class="page-section" id="page-resume">
+    <div class="container">
+      <div class="career-hero">
+        <span class="mono-label">EDITORIAL LAYOUT</span>
+        <h1 style="font-size: 3.5rem; margin-top: 0.5rem;">Resume Architect</h1>
+        <p style="font-size: 1.15rem; margin-top: 1rem; max-width: 700px;">Review structured zones below. Hover over sections in the diagram to inspect elements inside the corresponding document preview.</p>
+      </div>
+
+      <div class="resume-grid">
+        <!-- Left Editorial Section -->
+        <div class="resume-editorial-col">
+          
+          <!-- Section 1: Resume Structure -->
+          <div class="resume-structure-list">
+            <h3>Resume Structure</h3>
+            
+            <div class="structure-item" data-section="1">
+              <div class="structure-num">01</div>
+              <div class="structure-info">
+                <h4>Contact & Links</h4>
+                <p>Include name, phone, email, and absolute links to GitHub and LinkedIn profiles.</p>
+              </div>
+            </div>
+
+            <div class="structure-item" data-section="2">
+              <div class="structure-num">02</div>
+              <div class="structure-info">
+                <h4>Core Summary</h4>
+                <p>Write a brief paragraph detailing your technical specialties. No vague descriptions.</p>
+              </div>
+            </div>
+
+            <div class="structure-item" data-section="3">
+              <div class="structure-num">03</div>
+              <div class="structure-info">
+                <h4>Selected Projects / Experience</h4>
+                <p>Highlight real systems you built, indicating database languages and technical solutions.</p>
+              </div>
+            </div>
+
+            <div class="structure-item" data-section="4">
+              <div class="structure-num">04</div>
+              <div class="structure-info">
+                <h4>Skills Matrix</h4>
+                <p>Group tools by category: Languages, Databases, Visualizers, Systems.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: ATS Tips -->
+          <div style="margin-bottom: 4rem;">
+            <h3 style="margin-bottom: 2rem;">ATS Formatting Guidelines</h3>
+            <div class="checklist-grid">
+              <div class="checklist-item">
+                <span class="check-icon">✓</span>
+                <div class="checklist-info">
+                  <h5>Standard PDF Format</h5>
+                  <p>Avoid columns; vertical single column text reads best.</p>
+                </div>
+              </div>
+              <div class="checklist-item">
+                <span class="check-icon">✓</span>
+                <div class="checklist-info">
+                  <h5>Action Verbs First</h5>
+                  <p>Start experience points with 'Created', 'Optimized', 'Queried'.</p>
+                </div>
+              </div>
+              <div class="checklist-item">
+                <span class="check-icon">✓</span>
+                <div class="checklist-info">
+                  <h5>Simple Headers</h5>
+                  <p>Use 'Work Experience', 'Education', and 'Projects'.</p>
+                </div>
+              </div>
+              <div class="checklist-item">
+                <span class="check-icon">✓</span>
+                <div class="checklist-info">
+                  <h5>Quantitative Results</h5>
+                  <p>Incorporate numbers: 'Boosted load rates by 22%'.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Common Mistakes -->
+          <div>
+            <h3 style="margin-bottom: 2rem;">Mistakes to Avoid</h3>
+            <div class="mistakes-list">
+              <div class="mistake-card">
+                <div class="mistake-title"><span>×</span> Listing generic courses</div>
+                <p class="mistake-desc">Hiring teams assume you took Data Structures. Listing it wastes premium whitespace space.</p>
+                <div class="mistake-fix"><strong>The Fix:</strong> Highlight a complex project built outside of standard class homework.</div>
+              </div>
+              <div class="mistake-card">
+                <div class="mistake-title"><span>×</span> Grading your skill level</div>
+                <p class="mistake-desc">Adding progress bars (e.g. "SQL: 80%") is subjective and confuses parsing engines.</p>
+                <div class="mistake-fix"><strong>The Fix:</strong> List the tools objectively. Let project outcomes demonstrate your skill level.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Paper Resume Mockup -->
+        <div class="resume-paper-wrapper">
+          <div class="resume-paper">
+            
+            <div class="resume-paper-header">
+              <h4>ALEX RIVERA</h4>
+              <div class="resume-paper-subtitle">San Francisco, CA · alex@rivera.dev · github.com/arivera · linkedin.com/in/alexr</div>
+            </div>
+
+            <div class="resume-paper-section sec-summary">
+              <h5>Professional Summary</h5>
+              <p>Detail-oriented Software Developer specializing in frontend React interfaces and backend Node.js APIs. Experienced building responsive dashboards and managing relational SQL database schemas.</p>
+            </div>
+
+            <div class="resume-paper-section sec-exp">
+              <h5>Technical Projects</h5>
+              <div class="resume-paper-item">
+                <div class="resume-paper-item-header">
+                  <span>Career Constellation Tracker — React & D3.js</span>
+                  <span>June 2026</span>
+                </div>
+                <ul class="resume-paper-bullets">
+                  <li>Constructed an interactive node SVG network diagram visualizer using D3.js force layouts, tracking 9 career paths.</li>
+                  <li>Optimized local canvas updates reducing rendering compute lag by 45% during cursor tracking.</li>
+                  <li>Implemented client-side session states storing search filters across browser updates.</li>
+                </ul>
+              </div>
+              <div class="resume-paper-item">
+                <div class="resume-paper-item-header">
+                  <span>Database API Gateway — Express & PostgreSQL</span>
+                  <span>April 2026</span>
+                </div>
+                <ul class="resume-paper-bullets">
+                  <li>Engineered a backend REST endpoint framework, supporting 12 requests per second under peak testing.</li>
+                  <li>Structured relational schema indices reducing database query lag times by 120ms.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="resume-paper-section sec-skills">
+              <h5>Technical Skills</h5>
+              <div class="resume-paper-skills">
+                <span class="resume-paper-skill-item">JavaScript (ES6+)</span>
+                <span class="resume-paper-skill-item">React</span>
+                <span class="resume-paper-skill-item">Node.js</span>
+                <span class="resume-paper-skill-item">SQL (PostgreSQL)</span>
+                <span class="resume-paper-skill-item">Git</span>
+                <span class="resume-paper-skill-item">CSS Grid</span>
+              </div>
+            </div>
+
+            <div class="resume-paper-section sec-edu">
+              <h5>Education</h5>
+              <div class="resume-paper-item-header">
+                <span>B.S. Computer Science — State University</span>
+                <span>Expected 2027</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- PAGE 8: ABOUT PAGE                                       -->
+  <!-- ======================================================== -->
+  <section class="page-section" id="page-about">
+    <div class="container">
+      <div class="about-hero fade-in-up">
+        <span class="mono-label">OUR MISSION</span>
+        <h2>We built this because choosing a career shouldn't feel like guessing.</h2>
+        <p style="font-size: 1.25rem; max-width: 700px; margin: 2rem auto 0 auto; line-height: 1.6;">Traditional guidance systems are slow and corporate. We believe students deserve transparent, tech-focused guides detailing what tools to study and where starting salaries actually reside.</p>
+      </div>
+
+      <!-- Values Grid -->
+      <div class="values-grid">
+        <div class="value-card fade-in-up delay-1">
+          <span class="mono-label" style="margin-bottom: 1rem;">CLARITY</span>
+          <h3>Purpose</h3>
+          <p>We filter out buzzwords. No corporate fluff. Just clear developmental timelines indicating libraries and skills demanded by modern managers.</p>
+        </div>
+        <div class="value-card fade-in-up delay-2">
+          <span class="mono-label" style="margin-bottom: 1rem;">TARGET</span>
+          <h3>Who It's For</h3>
+          <p>Built for first-generation students, self-taught devs, and career switchers looking to enter data, security, or product fields rapidly.</p>
+        </div>
+        <div class="value-card fade-in-up delay-3">
+          <span class="mono-label" style="margin-bottom: 1rem;">VALUE</span>
+          <h3>What's Inside</h3>
+          <p>Interactive career constellation maps, dynamic skill matrix checks, interview prep cards, and curated certification paths.</p>
+        </div>
+      </div>
+
+      <!-- Chatbot mockup preview section -->
+      <div class="chatbot-mockup-section">
+        <div class="chatbot-info fade-in-up">
+          <span class="mono-label">NEXT GENERATION SUPPORT</span>
+          <h3>Interactive Mentor</h3>
+          <p style="font-size: 1.1rem; margin-top: 1rem;">We are coding a custom AI mentor to answer specialized curriculum questions. Type requirements and receive immediate roadmap adjustments based on your constraints.</p>
+        </div>
+        <div class="chatbot-mockup-container fade-in-up delay-2">
+          <div class="chatbot-header">
+            <div class="chatbot-avatar">AI</div>
+            <div class="chatbot-header-text">
+              <h5>Career Assistant</h5>
+              <div class="chatbot-status">Active Support</div>
+            </div>
+          </div>
+          <div class="chatbot-body">
+            <div class="chat-bubble bot">
+              <p>Hey there! I can help you pick custom courses or adjust study times. Which path are you exploring right now?</p>
+            </div>
+            <div class="chat-bubble user">
+              <p>I want to go into Data Analysis, but I only have 8 hours a week to study. What should I focus on first?</p>
+            </div>
+            <div class="chat-bubble bot">
+              <p>With 8 hours, skip Python for now. Spend your first 3 weeks mastering Advanced Excel lookup equations, then dive straight into SQL aggregate queries. SQL queries yield the highest immediate hiring value.</p>
+            </div>
+          </div>
+          <div class="chatbot-footer">
+            <div class="chat-input-placeholder">Ask about course timelines...</div>
+            <button class="chat-send-btn">→</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Closing CTA -->
+      <div class="about-cta-section fade-in-up">
+        <h3>Design Your Path Today.</h3>
+        <a href="#careers" class="btn btn-primary">Start Exploring Careers →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- GLOBAL FOOTER                                            -->
+  <!-- ======================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-layout">
+        <div class="footer-brand">
+          <a href="#home" class="logo">CareerPath<span>Hub</span></a>
+          <p>High-fidelity structural roadmaps and credential guides designed to simplify professional choices.</p>
+        </div>
+        <div class="footer-column">
+          <h5>Platform</h5>
+          <ul>
+            <li><a href="#careers">Career Paths</a></li>
+            <li><a href="#roadmaps">Roadmaps</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h5>Preparation</h5>
+          <ul>
+            <li><a href="#interview">Interview Prep</a></li>
+            <li><a href="#resume">Resume Tips</a></li>
+            <li><a href="#about">About System</a></li>
+          </ul>
+        </div>
+        <div class="footer-right">
+          <h5>Core Focus</h5>
+          <p>Created for first-generation tech students looking for structural clarity.</p>
+          <span class="student-tagline">Built for students everywhere</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 CareerPath Hub. All rights reserved.</span>
+        <span class="footer-purpose">Made with purpose</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Script Binding -->
+  <script src="app.js"></script>
+</body>
 </html>
